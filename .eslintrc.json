@@ -1,0 +1,125 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "parserOptions": {
+        "ecmaVersion": 8,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "experimentalObjectRestSpread": true
+        }
+    },
+    "env": {
+        "es6": true,
+        "browser": true,
+        "node": true,
+        "jest": true
+    },
+    "plugins": [
+        "react",
+        "jsx-a11y",
+        "import"
+    ],
+    "rules": {
+        "brace-style": [
+            "error",
+            "stroustrup"
+        ],
+        "class-methods-use-this": "off",
+        "comma-dangle": [
+            "error",
+            "always-multiline"
+        ],
+        "func-names": [
+            "error",
+            "as-needed"
+        ],
+        "function-paren-newline": [
+            "error",
+            "consistent"
+        ],
+        "guard-for-in": "off",
+        "max-len": "off",
+        "no-await-in-loop": "off",
+        "no-bitwise": "off",
+        "no-case-declarations": "off",
+        "no-continue": "off",
+        "no-labels": "off",
+        "no-loop-func": "off",
+        "no-param-reassign": [
+            "error",
+            {
+                "props": false
+            }
+        ],
+        "no-plusplus": "off",
+        "no-prototype-builtins": "warn",
+        "no-restricted-globals": "off",
+        "no-restricted-syntax": "off",
+        "no-return-assign": "off",
+        "no-unused-vars": "warn",
+        "object-curly-newline": "off",
+        "one-var": "off",
+        "one-var-declaration-per-line": "off",
+        "quote-props": [
+            "error",
+            "consistent"
+        ],
+        "arrow-parens": [
+            "error",
+            "always"
+        ],
+        "arrow-body-style": "off",
+        "react/forbid-prop-types": [
+            "error",
+            {
+                "forbid": [
+                    "array",
+                    "any"
+                ]
+            }
+        ],
+        "react/prop-types": [
+            "error",
+            {
+                "ignore": [
+                    "children",
+                    "className"
+                ]
+            }
+        ],
+        "react/require-default-props": "off",
+        "react/jsx-no-target-blank": "error",
+        "react/jsx-filename-extension": [
+            "warn",
+            {
+                "extensions": [
+                    ".js"
+                ]
+            }
+        ],
+        "react/jsx-closing-bracket-location": [
+            "error",
+            "tag-aligned"
+        ],
+        "react/no-did-mount-set-state": "warn",
+        "react/no-unused-prop-types": "warn",
+        "import/no-mutable-exports": "off",
+        "import/no-unresolved": "off",
+        "import/extensions": [
+            "error",
+            "never",
+            {
+                "jpeg": "always",
+                "png": "always",
+                "jpg": "always"
+            }
+        ],
+        "import/no-absolute-path": "off",
+        "import/no-extraneous-dependencies": "off",
+        "import/no-named-as-default": "off",
+        "jsx-a11y/anchor-is-valid": "off",
+        "jsx-a11y/click-events-have-key-events": "off",
+        "jsx-a11y/no-static-element-interactions": "off"
+    }
+}
