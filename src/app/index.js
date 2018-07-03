@@ -2,29 +2,25 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import EventPageContainer from '../EventPage/screens/EventPageContainer';
+import { createBottomTabNavigator } from 'react-navigation';
 
+import EventScreen from '../Event/components/Event';
+import TimelineScreen from '../Timeline/components/Timeline';
+import SettingsScreen from '../Settings/components/Settings';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
     justifyContent: 'center',
   },
 });
 
-// TODO: Pass in the real store to the provider
-const fakeStore = createStore(() => { });
+const RootNavigator = createBottomTabNavigator({
+  Timeline: { screen: TimelineScreen },
+  Event: { screen: EventScreen },
+  Settings: { screen: SettingsScreen },
+});
 
-const App = () => {
-  return (
-    <View style={styles.container}>
-      <Provider store={fakeStore}>
-        <EventPageContainer />
-      </Provider>
-    </View >
-  );
-};
-
-export default App;
+export default RootNavigator;
