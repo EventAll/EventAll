@@ -2,7 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import DemoButton from '../Demo/components/DemoButton';
+// import EventPage from '../EventPage/EventPage';
+import EventPageContainer from '../EventPage/EventPageContainer';
+
 
 const styles = StyleSheet.create({
   container: {
@@ -20,7 +22,7 @@ const App = () => {
   return (
     <View style={styles.container}>
       <Provider store={fakeStore}>
-        <DemoButton />
+        <EventPageContainer />
       </Provider>
     </View >
   );
