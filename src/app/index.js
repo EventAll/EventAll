@@ -2,8 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-// import EventPage from '../EventPage/EventPage';
-import EventPageContainer from '../EventPage/EventPageContainer';
+import EventPageContainer from '../EventPage/screens/EventPageContainer';
 
 
 const styles = StyleSheet.create({
