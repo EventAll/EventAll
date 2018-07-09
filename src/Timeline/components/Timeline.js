@@ -1,9 +1,10 @@
 import React from 'react';
 import { Text, View } from 'react-native';
+import styles from '../components/Timeline.style';
 
 const TimelineScreen = () => {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <View style={styles.screen}>
       <Text>Timeline Screen</Text>
     </View>
   );

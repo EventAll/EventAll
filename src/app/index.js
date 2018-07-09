@@ -18,24 +18,10 @@ const styles = StyleSheet.create({
   },
 });
 
-// TODO: Pass in the real store to the provider
-const fakeStore = createStore(() => { });
-
-// const App = () => {
-//   return (
-//     <View style={styles.container}>
-//       <Provider store={fakeStore}>
-//           <Event />
-//       </Provider>
-//     </View >
-//   );
-// };
-
-const App = createBottomTabNavigator({
+const RootNavigator = createBottomTabNavigator({
   Timeline: { screen: TimelineScreen },
   Event: { screen: EventScreen },
   Settings: { screen: SettingsScreen },
 });
 
-export default App;
-console.disableYellowBox = true;
+export default RootNavigator;
