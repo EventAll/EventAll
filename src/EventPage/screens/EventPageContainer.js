@@ -1,5 +1,5 @@
 import React from 'react';
-import EventPage from './EventPage';
+import EventPage from '../components/EventPage';
 
 class EventPageContainer extends React.Component {
   state = {

@@ -20,7 +20,7 @@ export default StyleSheet.create({
     padding: 10,
     marginBottom: 15,
     alignItems: 'center',
-    backgroundColor: colors.backgroundgrey,
+    backgroundColor: colors.backgroundGrey,
     borderRadius: 15,
   },
   subTitleText: {
