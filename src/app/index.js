@@ -4,6 +4,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { createBottomTabNavigator } from 'react-navigation';
 
+import DemoButton from '../Demo/components/DemoButton';
 import EventScreen from '../Event/components/Event';
 import TimelineScreen from '../Timeline/components/Timeline';
 import SettingsScreen from '../Settings/components/Settings';
