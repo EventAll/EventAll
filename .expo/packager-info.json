@@ -1,8 +1,8 @@
 {
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19001,
+  "packagerPid": 39593,
+  "expoServerNgrokUrl": "https://e6-f5f.iningcha.eventall.exp.direct",
+  "packagerNgrokUrl": "https://packager.e6-f5f.iningcha.eventall.exp.direct",
+  "ngrokPid": 39666
 }
