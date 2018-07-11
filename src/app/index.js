@@ -4,10 +4,10 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { createBottomTabNavigator } from 'react-navigation';
 
-import DemoButton from '../Demo/components/DemoButton';
 import EventScreen from '../Event/components/Event';
 import TimelineScreen from '../Timeline/components/Timeline';
 import SettingsScreen from '../Settings/components/Settings';
+import EventPageContainer from '../EventPage/screens/EventPageContainer';
 
 const styles = StyleSheet.create({
   container: {
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
 
 const RootNavigator = createBottomTabNavigator({
   Timeline: { screen: TimelineScreen },
-  Event: { screen: EventScreen },
+  Event: { screen: EventPageContainer },
   Settings: { screen: SettingsScreen },
 });
 
