@@ -5,6 +5,7 @@ export default StyleSheet.create({
 
   page: {
     padding: 10,
+    flex: 1,
   },
   title: {
     marginTop: 60,
