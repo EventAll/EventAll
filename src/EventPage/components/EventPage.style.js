@@ -6,12 +6,16 @@ export default StyleSheet.create({
   page: {
     padding: 10,
     flex: 1,
+    alignItems: 'center',
   },
   title: {
     marginTop: 60,
-    paddingHorizontal: 15,
+    marginLeft: 10,
+    paddingHorizontal: 10,
     fontSize: 30,
     fontWeight: 'bold',
+    textAlign: 'left',
+    alignSelf: 'stretch',
   },
   boxContainer: {
     marginTop: 30,

@@ -2,26 +2,38 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { createBottomTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 
-import EventScreen from '../Event/components/Event';
-import TimelineScreen from '../Timeline/components/Timeline';
-import SettingsScreen from '../Settings/components/Settings';
+import HomeContainer from '../Home/screens/HomeContainer';
+import ScheduleContainer from '../Schedule/screens/ScheduleContainer';
+import SettingsContainer from '../Settings/screens/SettingsContainer';
 import EventPageContainer from '../EventPage/screens/EventPageContainer';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
+const RootNavigator = createBottomTabNavigator({
+  Schedule: { screen: ScheduleContainer },
+  Event: { screen: EventPageContainer },
+  Settings: { screen: SettingsContainer },
+}, {
+  initialRouteName: 'Event',
+});
+
+const MainNavigator = createStackNavigator({
+  HomeScreen: {
+    screen: HomeContainer,
+  },
+  EventScreen: {
+    screen: RootNavigator,
+  },
+},
+{
+  headerMode: 'none',
+  cardStyle: {
+    backgroundColor: 'white',
+  },
+  navigationOptions: {
+    headerVisible: false,
   },
 });
 
-const RootNavigator = createBottomTabNavigator({
-  Timeline: { screen: TimelineScreen },
-  Event: { screen: EventPageContainer },
-  Settings: { screen: SettingsScreen },
-});
+export default MainNavigator;
 
-export default RootNavigator;
