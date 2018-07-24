@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 13530,
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
   "expoServerNgrokUrl": "https://fi-axc.iningcha.eventall.exp.direct",
   "packagerNgrokUrl": "https://packager.fi-axc.iningcha.eventall.exp.direct",
-  "ngrokPid": 13593
+  "ngrokPid": 74833
 }
