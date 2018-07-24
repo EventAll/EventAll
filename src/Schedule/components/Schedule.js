@@ -3,27 +3,17 @@ import { Ionicons } from '@expo/vector-icons';
 import { Text, View, FlatList, TouchableWithoutFeedback, TouchableOpacity } from 'react-native';
 import PropTypes from 'prop-types';
 import styles from '../components/Schedule.style';
+import CalendarTab from '../components/CalendarTab';
+import ScheduleBox from '../components/ScheduleBox';
+
 
 const ScheduleScreen = (props) => {
-  const { exampleScheduleList, selectDateScheduleList, switchStarIcon, showAgenda, showMyAgenda, selectDate, agenda, date } = props;
+  const { exampleScheduleList, selectDateScheduleList, switchStarIcon, toggleAgenda, selectDate, agenda, date } = props;
 
   function renderFlatList(item) {
-    if (item.starred) {
+    if (item.isStarred) {
       return (
-        <View style={styles.scheduleBox}>
-          <View style={styles.scheduleBoxLine} />
-          <View style={styles.scheduleBoxSideTime}><Text style={styles.sideTimeText}>{item.startTime}{'\n'}{item.startZone}</Text></View>
-          <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-            <Text style={styles.scheduleBoxTitle}>{item.title}</Text>
-            <TouchableWithoutFeedback onPress={() => switchStarIcon(item)} >
-              <View>
-                <Ionicons name="ios-star" size={30} color="black" />
-              </View>
-            </TouchableWithoutFeedback>
-          </View>
-          <Text style={styles.scheduleBoxDetail}>{item.location}</Text>
-          <Text style={styles.scheduleBoxDetail}>{item.startTime} {item.startZone} - {item.endTime} {item.endZone}</Text>
-        </View>
+        <ScheduleBox switchStarIcon={switchStarIcon} item={item} />
       );
     }
     return null;
@@ -36,46 +26,23 @@ const ScheduleScreen = (props) => {
         <Ionicons name="md-contact" size={40} style={styles.userProfileIcon} />
       </TouchableOpacity>
       <View style={styles.agendaTabs}>
-        <TouchableOpacity style={styles.showAgenda} onPress={showAgenda}>
+        <TouchableOpacity style={styles.showAgenda} onPress={() => toggleAgenda(true)}>
           {agenda && <View style={styles.agendaTabColor} />}
           <Text style={styles.agendaTabText}>Agenda</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.showMyAgenda} onPress={showMyAgenda}>
+        <TouchableOpacity style={styles.showMyAgenda} onPress={() => toggleAgenda(false)}>
           {!agenda && <View style={styles.agendaTabColor} />}
           <Text style={styles.agendaTabText}>My Agenda</Text>
         </TouchableOpacity>
       </View>
-      <View style={styles.calendarTabs}>
-        {exampleScheduleList.map((schedule) => {
-          return (
-            <TouchableOpacity key={schedule.key} onPress={() => selectDate(schedule.key)}>
-              <Text style={styles.calendarTabText}>{schedule.date}</Text>
-              {date === schedule.key && <View style={styles.dateLine} />}
-            </TouchableOpacity>
-            );
-        })}
-      </View>
+      <CalendarTab exampleScheduleList={exampleScheduleList} date={date} selectDate={selectDate} />
       {agenda === true &&
       <FlatList
         style={styles.boxContainer}
         data={selectDateScheduleList}
         extraData={props}
         renderItem={({ item }) => (
-          <View style={styles.scheduleBox}>
-            <View style={styles.scheduleBoxLine} />
-            <View style={styles.scheduleBoxSideTime}><Text style={styles.sideTimeText}>{item.startTime}{'\n'}{item.startZone}</Text></View>
-            <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-              <Text style={styles.scheduleBoxTitle}>{item.title}</Text>
-              <TouchableWithoutFeedback onPress={() => switchStarIcon(item)} >
-                <View>
-                  {item.starred === true && <Ionicons name="ios-star" size={30} color="black" />}
-                  {item.starred === false && <Ionicons name="ios-star-outline" size={30} color="black" />}
-                </View>
-              </TouchableWithoutFeedback>
-            </View>
-            <Text style={styles.scheduleBoxDetail}>{item.location}</Text>
-            <Text style={styles.scheduleBoxDetail}>{item.startTime} {item.startZone} - {item.endTime} {item.endZone}</Text>
-          </View>
+          <ScheduleBox switchStarIcon={switchStarIcon} item={item} />
         )}
       />}
       {agenda !== true &&
@@ -95,8 +62,7 @@ ScheduleScreen.propTypes = {
   exampleScheduleList: PropTypes.instanceOf(Array),
   selectDateScheduleList: PropTypes.instanceOf(Array),
   switchStarIcon: PropTypes.func.isRequired,
-  showAgenda: PropTypes.func.isRequired,
-  showMyAgenda: PropTypes.func.isRequired,
+  toggleAgenda: PropTypes.func.isRequired,
   selectDate: PropTypes.func.isRequired,
   date: PropTypes.string,
   agenda: PropTypes.bool,

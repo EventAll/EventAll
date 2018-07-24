@@ -3,6 +3,9 @@ import PropTypes from 'prop-types';
 import Home from '../components/Home';
 
 class HomeContainer extends React.Component {
+  static propTypes={
+    navigation: PropTypes.object.isRequired,
+  }
   state = {
     upcomingEventList: [
       { key: '1',
@@ -41,10 +44,6 @@ class HomeContainer extends React.Component {
             />);
   }
 }
-
-HomeContainer.propTypes = {
-  navigation: PropTypes.object.isRequired,
-};
 
 export default HomeContainer;
 

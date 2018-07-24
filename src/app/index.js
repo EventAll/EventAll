@@ -9,7 +9,7 @@ import ScheduleContainer from '../Schedule/screens/ScheduleContainer';
 import SettingsContainer from '../Settings/screens/SettingsContainer';
 import EventPageContainer from '../EventPage/screens/EventPageContainer';
 
-const RootNavigator = createBottomTabNavigator({
+const LoggedInNavigator = createBottomTabNavigator({
   Schedule: { screen: ScheduleContainer },
   Event: { screen: EventPageContainer },
   Settings: { screen: SettingsContainer },
@@ -17,12 +17,12 @@ const RootNavigator = createBottomTabNavigator({
   initialRouteName: 'Event',
 });
 
-const MainNavigator = createStackNavigator({
+const RootNavigator = createStackNavigator({
   HomeScreen: {
     screen: HomeContainer,
   },
   EventScreen: {
-    screen: RootNavigator,
+    screen: LoggedInNavigator,
   },
 },
 {
@@ -35,5 +35,5 @@ const MainNavigator = createStackNavigator({
   },
 });
 
-export default MainNavigator;
+export default RootNavigator;
 
