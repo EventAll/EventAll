@@ -23,11 +23,11 @@ class SignupScreen extends React.Component {
     };
   }
 
-  verifyFBSignup() {
+  verifyFBSignup = () => {
     // Facebook authentication here
   }
 
-  confirmPassword() {
+  confirmPassword = () => {
     if (this.state.password === this.state.confirmedPassword) {
       // remove error message
       this.state.passwordsMatch = true;
@@ -37,7 +37,7 @@ class SignupScreen extends React.Component {
     this.state.passwordsMatch = false;
   }
 
-  verifySignup() {
+  verifySignup = () => {
     if (this.state.username === '') {
       // error message
       return;
