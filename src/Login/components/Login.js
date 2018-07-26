@@ -1,25 +1,22 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Image, View, Text, TouchableOpacity, TextInput } from 'react-native';
-import { PropTypes } from 'prop-types';
+import PropTypes from 'prop-types';
 
 import styles from '../components/Login.style';
 
 const logoImg = require('../../globals/EventAllLightLong.png');
 
-class LoginScreen extends React.Component {
+class LoginScreen extends Component {
   static propTypes = {
     navigation: PropTypes.shape({
       navigate: PropTypes.func.isRequired,
     }).isRequired,
   };
 
-  constructor() {
-    super();
-    this.state = {
-      username: '',
-      password: '',
-    };
-  }
+  state = {
+    username: '',
+    password: '',
+  };
 
   verifyFBLogin = () => {
     // Facebook authentication here
@@ -38,13 +35,12 @@ class LoginScreen extends React.Component {
 
     // make sure credentials match ones from database
 
-    this.props.navigation.navigate('Root');
+    this.props.navigation.navigate('Home');
   }
 
   render() {
     return (
       <View style={styles.container}>
-
         <Image style={styles.logo} source={logoImg} />
 
         <TouchableOpacity style={styles.FBLoginButton} activeOpacity={0.7} onPress={this.verifyFBLogin}>
@@ -57,7 +53,7 @@ class LoginScreen extends React.Component {
           <View style={styles.line} />
         </View>
 
-        <Text style={{ fontWeight: '500' }} >Log in to your account</Text>
+        <Text style={styles.regularText} >Log in to your account</Text>
 
         <View style={styles.formContainer}>
           <TextInput
@@ -81,9 +77,7 @@ class LoginScreen extends React.Component {
         </TouchableOpacity>
 
         <Text style={styles.signUpText} onPress={() => this.props.navigation.navigate('Signup')}>Don&apos;t have an account? Sign up</Text>
-
       </View >
-
     );
   }
 }

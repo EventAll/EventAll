@@ -7,7 +7,7 @@ import EventPageContainer from '../EventPage/screens/EventPageContainer';
 import LoginScreen from '../Login/components/Login';
 import SignupScreen from '../Signup/components/Signup';
 
-const RootNavigator = createBottomTabNavigator({
+const HomeNavigator = createBottomTabNavigator({
   Timeline: { screen: TimelineScreen },
   Event: { screen: EventPageContainer },
   Settings: { screen: SettingsScreen },
@@ -16,10 +16,10 @@ const RootNavigator = createBottomTabNavigator({
   initialRouteName: 'Event',
 });
 
-const LoginNavigator = createStackNavigator({
+const RootNavigator = createStackNavigator({
   Login: { screen: LoginScreen },
   Signup: { screen: SignupScreen },
-  Root: { screen: RootNavigator },
+  Home: { screen: HomeNavigator },
 },
 {
   navigationOptions: {
@@ -30,4 +30,4 @@ const LoginNavigator = createStackNavigator({
   initialRouteName: 'Login',
 });
 
-export default LoginNavigator;
+export default RootNavigator;

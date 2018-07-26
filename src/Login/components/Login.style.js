@@ -78,6 +78,10 @@ export default StyleSheet.create({
     marginTop: 40,
   },
 
+  regularText: {
+    fontWeight: '500',
+  },
+
   errorMsg: {
     textAlign: 'right',
     alignSelf: 'stretch',
