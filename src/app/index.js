@@ -1,27 +1,33 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
-import { createBottomTabNavigator } from 'react-navigation';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 
-import EventScreen from '../Event/components/Event';
 import TimelineScreen from '../Timeline/components/Timeline';
 import SettingsScreen from '../Settings/components/Settings';
 import EventPageContainer from '../EventPage/screens/EventPageContainer';
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import LoginScreen from '../Login/components/Login';
+import SignupScreen from '../Signup/components/Signup';
 
 const RootNavigator = createBottomTabNavigator({
   Timeline: { screen: TimelineScreen },
   Event: { screen: EventPageContainer },
   Settings: { screen: SettingsScreen },
+},
+{
+  initialRouteName: 'Event',
 });
 
-export default RootNavigator;
+const LoginNavigator = createStackNavigator({
+  Login: { screen: LoginScreen },
+  Signup: { screen: SignupScreen },
+  Root: { screen: RootNavigator },
+},
+{
+  navigationOptions: {
+    headerLeft: null,
+  },
+},
+{
+  initialRouteName: 'Login',
+});
+
+export default LoginNavigator;
