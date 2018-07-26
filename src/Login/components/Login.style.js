@@ -49,13 +49,18 @@ export default StyleSheet.create({
     margin: 30,
   },
 
+  or: {
+    marginTop: 20,
+    fontWeight: '600',
+  },
+
   formContainer: {
     margin: 10,
     alignItems: 'flex-start',
     width: Dimensions.get('window').width * 0.75,
   },
 
-  input: {
+  formField: {
     height: 40,
     fontSize: 13,
     padding: 10,
@@ -73,7 +78,12 @@ export default StyleSheet.create({
     marginTop: 40,
   },
 
-  error: {
+  errorMsg: {
+    textAlign: 'right',
+    alignSelf: 'stretch',
+    paddingRight: 8,
+    paddingTop: 2,
     color: 'red',
+    fontSize: 11,
   },
 });

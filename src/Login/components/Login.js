@@ -6,8 +6,6 @@ import styles from '../components/Login.style';
 
 const logoImg = require('../../globals/EventAllLightLong.png');
 
-// import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-
 class LoginScreen extends React.Component {
   static propTypes = {
     navigation: PropTypes.shape({
@@ -22,7 +20,6 @@ class LoginScreen extends React.Component {
       password: '',
     };
   }
-
 
   verifyFBLogin = () => {
     // Facebook authentication here
@@ -56,7 +53,7 @@ class LoginScreen extends React.Component {
 
         <View style={styles.rowContainer}>
           <View style={styles.line} />
-          <Text style={{ marginTop: 20, fontWeight: '600' }}>OR</Text>
+          <Text style={styles.or}>OR</Text>
           <View style={styles.line} />
         </View>
 
@@ -65,14 +62,15 @@ class LoginScreen extends React.Component {
         <View style={styles.formContainer}>
           <TextInput
             placeholder="Username or Email"
-            style={styles.input}
+            style={styles.formField}
             underlineColorAndroid="transparent"
             onChangeText={(username) => this.setState({ username })}
           />
+
           <TextInput
             secureTextEntry
             placeholder="Password"
-            style={styles.input}
+            style={styles.formField}
             underlineColorAndroid="transparent"
             onChangeText={(password) => this.setState({ password })}
           />
@@ -84,7 +82,7 @@ class LoginScreen extends React.Component {
 
         <Text style={styles.signUpText} onPress={() => this.props.navigation.navigate('Signup')}>Don&apos;t have an account? Sign up</Text>
 
-      </View>
+      </View >
 
     );
   }

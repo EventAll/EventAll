@@ -76,7 +76,7 @@ class SignupScreen extends React.Component {
 
         <View style={styles.rowContainer}>
           <View style={styles.line} />
-          <Text style={{ marginTop: 20, fontWeight: '600' }}>OR</Text>
+          <Text style={styles.or}>OR</Text>
           <View style={styles.line} />
         </View>
 
@@ -85,24 +85,23 @@ class SignupScreen extends React.Component {
         <View style={styles.formContainer}>
           <TextInput
             placeholder="Username or Email"
-            style={styles.input}
+            style={styles.formField}
             underlineColorAndroid="transparent"
             onChangeText={(username) => this.setState({ username })}
           />
           <TextInput
             secureTextEntry
             placeholder="Password"
-            style={styles.input}
+            style={styles.formField}
             underlineColorAndroid="transparent"
             onChangeText={(password) => this.setState({ password })}
           />
           <TextInput
             secureTextEntry
             placeholder="Confirm Password"
-            style={styles.input}
+            style={styles.formField}
             underlineColorAndroid="transparent"
-            onChangeText={
-              (confirmedPassword) => this.setState({ confirmedPassword })
+            onChangeText={(confirmedPassword) => this.setState({ confirmedPassword })
             }
           />
         </View>
