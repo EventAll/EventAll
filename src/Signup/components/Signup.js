@@ -22,17 +22,18 @@ class SignupScreen extends Component {
 
   verifyFBSignup = () => {
     // Facebook authentication here
-  }
+  };
 
   confirmPassword = () => {
-    if (this.state.password === this.state.confirmedPassword) {
+    const passwordsMatch = this.state.password === this.state.confirmedPassword;
+    if (passwordsMatch) {
       // remove error message
-      this.state.passwordsMatch = true;
     }
-
-    // display error message
-    this.state.passwordsMatch = false;
-  }
+    else {
+      // display error message
+    }
+    this.setState({ passwordsMatch });
+  };
 
   verifySignup = () => {
     if (this.state.username === '') {
@@ -58,15 +59,18 @@ class SignupScreen extends Component {
     // check with database to make sure user doesn't exist
 
     this.props.navigation.navigate('Home');
-  }
-
+  };
 
   render() {
     return (
       <View style={styles.container}>
         <Image style={styles.logo} source={logoImg} />
 
-        <TouchableOpacity style={styles.FBLoginButton} activeOpacity={0.7} onPress={this.verifyFBSignup}>
+        <TouchableOpacity
+          style={styles.FBLoginButton}
+          activeOpacity={0.7}
+          onPress={this.verifyFBSignup}
+        >
           <Text style={styles.buttonText}>Log In With Facebook</Text>
         </TouchableOpacity>
 
@@ -76,7 +80,7 @@ class SignupScreen extends Component {
           <View style={styles.line} />
         </View>
 
-        <Text style={styles.regularText} >Sign up as a new user</Text>
+        <Text style={styles.regularText}>Sign up as a new user</Text>
 
         <View style={styles.formContainer}>
           <TextInput
@@ -97,16 +101,26 @@ class SignupScreen extends Component {
             placeholder="Confirm Password"
             style={styles.formField}
             underlineColorAndroid="transparent"
-            onChangeText={(confirmedPassword) => this.setState({ confirmedPassword })
+            onChangeText={(confirmedPassword) =>
+              this.setState({ confirmedPassword })
             }
           />
         </View>
 
-        <TouchableOpacity style={styles.signUpButton} activeOpacity={0.7} onPress={this.verifySignup}>
+        <TouchableOpacity
+          style={styles.signUpButton}
+          activeOpacity={0.7}
+          onPress={this.verifySignup}
+        >
           <Text style={styles.buttonText}>Sign up</Text>
         </TouchableOpacity>
 
-        <Text style={styles.loginText} onPress={() => this.props.navigation.navigate('Login')}>Already registered? Log in</Text>
+        <Text
+          style={styles.loginText}
+          onPress={() => this.props.navigation.navigate('Login')}
+        >
+          Already registered? Log in
+        </Text>
       </View>
     );
   }
