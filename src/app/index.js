@@ -1,38 +1,33 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 
-import HomeContainer from '../Home/screens/HomeContainer';
-import ScheduleContainer from '../Schedule/screens/ScheduleContainer';
-import SettingsContainer from '../Settings/screens/SettingsContainer';
+import TimelineScreen from '../Timeline/components/Timeline';
+import SettingsScreen from '../Settings/components/Settings';
 import EventPageContainer from '../EventPage/screens/EventPageContainer';
 
-const LoggedInNavigator = createBottomTabNavigator({
-  Schedule: { screen: ScheduleContainer },
+import LoginScreen from '../Login/components/Login';
+import SignupScreen from '../Signup/components/Signup';
+
+const HomeNavigator = createBottomTabNavigator({
+  Timeline: { screen: TimelineScreen },
   Event: { screen: EventPageContainer },
-  Settings: { screen: SettingsContainer },
-}, {
+  Settings: { screen: SettingsScreen },
+},
+{
   initialRouteName: 'Event',
 });
 
 const RootNavigator = createStackNavigator({
-  HomeScreen: {
-    screen: HomeContainer,
-  },
-  EventScreen: {
-    screen: LoggedInNavigator,
+  Login: { screen: LoginScreen },
+  Signup: { screen: SignupScreen },
+  Home: { screen: HomeNavigator },
+},
+{
+  navigationOptions: {
+    headerLeft: null,
   },
 },
 {
-  headerMode: 'none',
-  cardStyle: {
-    backgroundColor: 'white',
-  },
-  navigationOptions: {
-    headerVisible: false,
-  },
+  initialRouteName: 'Login',
 });
 
 export default RootNavigator;
