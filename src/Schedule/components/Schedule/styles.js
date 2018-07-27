@@ -1,4 +1,4 @@
-import colors from '../../globals/colors';
+import colors from '../../../globals/colors';
 
 const styles = {
   screen: {
@@ -54,7 +54,6 @@ const styles = {
     textAlign: 'justify',
     color: 'deepskyblue',
   },
-
 };
 
 export default styles;

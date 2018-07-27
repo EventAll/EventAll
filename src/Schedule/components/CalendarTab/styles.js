@@ -1,4 +1,6 @@
-const styles = {
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
   calendarTabs: {
     flexDirection: 'row',
     padding: 5,
@@ -15,7 +17,6 @@ const styles = {
     left: 3,
     top: 20,
   },
-};
+});
 
 export default styles;
-

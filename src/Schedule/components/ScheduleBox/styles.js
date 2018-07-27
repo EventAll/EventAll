@@ -1,4 +1,6 @@
-const styles = {
+import { StyleSheet } from 'react-native';
+
+const styles = StyleSheet.create({
   scheduleBoxLine: {
     borderLeftColor: 'black',
     borderLeftWidth: 1,
@@ -36,7 +38,6 @@ const styles = {
     left: -32,
     top: 20,
   },
-};
+});
 
 export default styles;
-
