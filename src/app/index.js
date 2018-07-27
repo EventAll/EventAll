@@ -31,3 +31,4 @@ const RootNavigator = createStackNavigator({
 });
 
 export default RootNavigator;
+
