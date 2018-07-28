@@ -1,15 +1,14 @@
-import { createStackNavigator } from 'react-navigation';
+import { createSwitchNavigator } from 'react-navigation';
 
 import HomeScreen from '../Home/screens/HomeScreen';
-
-import LoginScreen from '../Login/screens/LoginScreen';
-import SignupScreen from '../Signup/screens/SignupScreen';
 import EventNavigator from '../Event/navigator';
+import AuthenticationNavigator from '../Authentication/navigator';
+import AuthLoadingScreen from '../Authentication/screens/AuthLoadingScreen';
 
-const RootNavigator = createStackNavigator(
+const RootNavigator = createSwitchNavigator(
   {
-    Login: { screen: LoginScreen },
-    Signup: { screen: SignupScreen },
+    AuthLoading: { screen: AuthLoadingScreen },
+    Authentication: { screen: AuthenticationNavigator },
     Event: { screen: EventNavigator },
     Home: { screen: HomeScreen },
   },
@@ -18,7 +17,7 @@ const RootNavigator = createStackNavigator(
       // Placeholder until we get an asset
       headerBackTitle: 'BACK',
     },
-    initialRouteName: 'Home',
+    initialRouteName: 'AuthLoading',
   }
 );
 
