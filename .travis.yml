@@ -13,6 +13,6 @@ before_install:
 install:
   - "yarn install"
 script:
-  - "NODE_PATH=. yarn test"
+  - "NODE_PATH=. yarn lint"
 
 
