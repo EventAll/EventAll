@@ -48,7 +48,7 @@ const HomePage = ({ upcomingEventList, pastEventList, goToEvent }) => {
 HomePage.propTypes = {
   upcomingEventList: PropTypes.instanceOf(Array),
   pastEventList: PropTypes.instanceOf(Array),
-  goToEvent: PropTypes.func,
+  goToEvent: PropTypes.func.isRequired,
 };
 
 export default HomePage;

@@ -7,7 +7,6 @@ const styles = {
     alignItems: 'center',
   },
   title: {
-    marginTop: 60,
     marginLeft: 10,
     paddingHorizontal: 10,
     fontSize: 30,

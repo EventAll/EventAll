@@ -9,7 +9,7 @@ export default StyleSheet.create({
     backgroundColor: 'white',
   },
   title: {
-    marginTop: 60,
+    marginTop: 10,
     marginLeft: 10,
     paddingHorizontal: 10,
     fontSize: 30,
@@ -22,7 +22,7 @@ export default StyleSheet.create({
     width: 330,
   },
   box: {
-    padding: 10,
+    padding: 15,
     marginBottom: 15,
     alignItems: 'center',
     backgroundColor: colors.backgroundGrey,

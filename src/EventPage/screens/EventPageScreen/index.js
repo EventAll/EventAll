@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import EventPage from '../../components/EventPage';
 
 class EventPageScreen extends Component {
+  static navigationOptions = {
+    header: null,
+  };
+
   state = {
     event: {
       key: '1',

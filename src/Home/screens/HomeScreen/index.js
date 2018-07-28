@@ -3,9 +3,14 @@ import PropTypes from 'prop-types';
 import Home from '../../components/Home';
 
 class HomeScreen extends Component {
+  // Setting header = null removes the navigation bar from the top
+  static navigationOptions = {
+    header: null,
+  };
   static propTypes = {
     navigation: PropTypes.object.isRequired,
   };
+
   state = {
     upcomingEventList: [
       {
@@ -44,7 +49,7 @@ class HomeScreen extends Component {
   };
 
   goToEvent = (event) => {
-    this.props.navigation.navigate('EventScreen', { event });
+    this.props.navigation.navigate('Event', { event });
   };
 
   render() {
