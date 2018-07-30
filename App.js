@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import AppRoot from './src/app';
+import RootNavigator from './src/app';
 
-const App = () => <AppRoot />;
+const App = () => <RootNavigator />;
 export default App;

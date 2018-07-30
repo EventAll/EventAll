@@ -1,37 +1,27 @@
-import {
-  createBottomTabNavigator,
-  createStackNavigator,
-} from 'react-navigation';
+import { createSwitchNavigator } from 'react-navigation';
 
-import SettingsScreen from '../Settings/components/Settings';
-import EventPageContainer from '../EventPage/screens/EventPageContainer';
+import HomeScreen from '../Home/screens/HomeScreen';
+import EventNavigator from '../Event/navigator';
+import AuthenticationNavigator from '../Authentication/navigator';
+import AuthLoadingScreen from '../Authentication/screens/AuthLoadingScreen';
 
-import LoginScreen from '../Login/components/Login';
-import SignupScreen from '../Signup/components/Signup';
-
-const HomeNavigator = createBottomTabNavigator(
+/**
+ * Switch navigator basically acts like a lightweight "Switch" statement and does't actually stack screens ontop of each other.
+ * It is perfect for a top-level navigator because we don't want to render the Authentication screen when the user's already logged in
+ */
+const RootNavigator = createSwitchNavigator(
   {
-    Event: { screen: EventPageContainer },
-    Settings: { screen: SettingsScreen },
-  },
-  {
-    initialRouteName: 'Event',
-  }
-);
-
-const RootNavigator = createStackNavigator(
-  {
-    Login: { screen: LoginScreen },
-    Signup: { screen: SignupScreen },
-    Home: { screen: HomeNavigator },
+    AuthLoading: { screen: AuthLoadingScreen },
+    Authentication: { screen: AuthenticationNavigator },
+    Event: { screen: EventNavigator },
+    Home: { screen: HomeScreen },
   },
   {
     navigationOptions: {
-      headerLeft: null,
+      // Placeholder until we get an asset
+      headerBackTitle: 'BACK',
     },
-  },
-  {
-    initialRouteName: 'Login',
+    initialRouteName: 'AuthLoading',
   }
 );
 
