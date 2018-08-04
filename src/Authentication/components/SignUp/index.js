@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Image, View, Text, TouchableOpacity, TextInput, Alert } from 'react-native';
+import { Image, View, Text, TouchableOpacity, TextInput, ActivityIndicator, Alert } from 'react-native';
+import isEmpty from 'lodash.isempty';
 import PropTypes from 'prop-types';
 
 import styles from './styles';
@@ -19,53 +20,40 @@ class SignupScreen extends Component {
     username: '',
     password: '',
     confirmedPassword: '',
-    passwordsMatch: false,
+    errors: {},
   };
 
   verifyFBSignup = () => {
     // Facebook authentication here
   };
 
-  confirmPassword = () => {
-    const passwordsMatch = this.state.password === this.state.confirmedPassword;
-    if (passwordsMatch) {
-      // remove error message
-    }
-    else {
-      // display error message
-    }
-    this.setState({ passwordsMatch });
-  };
-
   verifySignup = () => {
+    const errors = {};
     if (this.state.username === '') {
-      // error message
-      return false;
+      errors.username = true;
     }
 
     if (this.state.password === '') {
-      // error message
-      return false;
+      errors.password = true;
     }
 
     if (this.state.confirmedPassword === '') {
-      // error message
-      return false;
+      errors.confirmedPassword = true;
     }
 
-    if (!this.state.passwordsMatch) {
-      // error message
-      return false;
+    if (this.state.password !== this.state.confirmedPassword && !errors.username && !errors.password && !errors.confirmedPassword) {
+      errors.passwordsMatch = false;
     }
-
-    return true;
+    this.setState({ errors });
+    return errors;
   };
 
   handleSignUpPressed = () => {
-    // if (!this.verifySignup()) {
-    //   return;
-    // }
-    console.log('Handle Signup pressed');
+    const errors = this.verifySignup();
+    if (!isEmpty(errors)) {
+      Alert.alert('Errors!');
+      return;
+    }
     const payload = {
       variables: {
         email: this.state.username,
@@ -73,10 +61,10 @@ class SignupScreen extends Component {
       },
     };
     this.props.dispatchMutation(payload);
-    // this.props.navigation.navigate('Home');
   };
 
   render() {
+    const { errors } = this.state;
     return (
       <View style={styles.container}>
         <Image style={styles.logo} source={logoImg} />
@@ -96,7 +84,7 @@ class SignupScreen extends Component {
         </View>
 
         <Text style={styles.regularText}>Sign up as a new user</Text>
-
+        <ActivityIndicator animating={this.props.loading} />
         <View style={styles.formContainer}>
           <TextInput
             placeholder="Username or Email"
