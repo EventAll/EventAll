@@ -14,7 +14,7 @@ class AuthLoadingScreen extends Component {
   };
 
   state = {
-    isLoggedIn: true,
+    isLoggedIn: false,
   };
 
   componentDidMount() {
