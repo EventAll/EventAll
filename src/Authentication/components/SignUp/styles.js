@@ -83,11 +83,7 @@ export default StyleSheet.create({
   },
 
   errorMsg: {
-    textAlign: 'right',
-    alignSelf: 'stretch',
-    paddingRight: 8,
-    paddingTop: 2,
-    color: 'red',
-    fontSize: 11,
+    borderBottomWidth: 1,
+    borderBottomColor: 'red',
   },
 });

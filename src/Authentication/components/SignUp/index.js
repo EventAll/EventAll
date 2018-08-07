@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, Text, TouchableOpacity, TextInput, ActivityIndicator, Alert } from 'react-native';
+import { Image, View, Text, TouchableOpacity, TextInput, ActivityIndicator, Alert, StyleSheet } from 'react-native';
 import isEmpty from 'lodash.isempty';
 import PropTypes from 'prop-types';
 
@@ -17,20 +17,44 @@ class SignupScreen extends Component {
   };
 
   state = {
-    username: '',
+    email: '',
     password: '',
     confirmedPassword: '',
     errors: {},
   };
 
-  verifyFBSignup = () => {
-    // Facebook authentication here
+  getTextFieldStyles = (error) => {
+    if (!error) {
+      return styles.formField;
+    }
+    return StyleSheet.flatten([styles.formField, styles.errorMsg]);
+  }
+
+  handleSignUpPressed = () => {
+    const errors = this.verifySignup();
+    if (!isEmpty(errors)) {
+      // Find some better way to display errors
+      Alert.alert(JSON.stringify(errors));
+      return;
+    }
+    const payload = {
+      variables: {
+        email: this.state.email,
+        password: this.state.password,
+      },
+    };
+    this.props.dispatchMutation(payload);
   };
+
+  handleTextFieldInput = (value, field) => {
+    const errors = { ...this.state.errors, [field]: false };
+    this.setState({ [field]: value, errors });
+  }
 
   verifySignup = () => {
     const errors = {};
-    if (this.state.username === '') {
-      errors.username = true;
+    if (this.state.email === '') {
+      errors.email = true;
     }
 
     if (this.state.password === '') {
@@ -41,30 +65,20 @@ class SignupScreen extends Component {
       errors.confirmedPassword = true;
     }
 
-    if (this.state.password !== this.state.confirmedPassword && !errors.username && !errors.password && !errors.confirmedPassword) {
+    if (this.state.password !== this.state.confirmedPassword && !errors.email && !errors.password && !errors.confirmedPassword) {
       errors.passwordsMatch = false;
     }
     this.setState({ errors });
     return errors;
   };
 
-  handleSignUpPressed = () => {
-    const errors = this.verifySignup();
-    if (!isEmpty(errors)) {
-      Alert.alert('Errors!');
-      return;
-    }
-    const payload = {
-      variables: {
-        email: this.state.username,
-        password: this.state.password,
-      },
-    };
-    this.props.dispatchMutation(payload);
+  verifyFBSignup = () => {
+    // Facebook authentication here
   };
 
   render() {
     const { errors } = this.state;
+    console.log(errors);
     return (
       <View style={styles.container}>
         <Image style={styles.logo} source={logoImg} />
@@ -87,26 +101,36 @@ class SignupScreen extends Component {
         <ActivityIndicator animating={this.props.loading} />
         <View style={styles.formContainer}>
           <TextInput
-            placeholder="Username or Email"
-            style={styles.formField}
+            placeholder="Email"
+            style={this.getTextFieldStyles(errors.email)}
+            keyboardType="email-address"
             underlineColorAndroid="transparent"
-            onChangeText={(username) => this.setState({ username })}
+            onSubmitEditing={() => this.passwordInput.focus()}
+            blurOnSubmit={false}
+            onChangeText={(text) => this.handleTextFieldInput(text, 'email')}
           />
           <TextInput
             secureTextEntry
             placeholder="Password"
-            style={styles.formField}
+            style={this.getTextFieldStyles(errors.password)}
             underlineColorAndroid="transparent"
-            onChangeText={(password) => this.setState({ password })}
+            blurOnSubmit={false}
+            ref={(input) => {
+              this.passwordInput = input;
+            }}
+            onSubmitEditing={() => this.confirmPasswordInput.focus()}
+            onChangeText={(text) => this.handleTextFieldInput(text, 'password')}
           />
           <TextInput
             secureTextEntry
             placeholder="Confirm Password"
-            style={styles.formField}
+            style={this.getTextFieldStyles(errors.confirmedPassword)}
             underlineColorAndroid="transparent"
-            onChangeText={(confirmedPassword) =>
-              this.setState({ confirmedPassword })
-            }
+            ref={(input) => {
+              this.confirmPasswordInput = input;
+            }}
+            onSubmitEditing={this.handleSignUpPressed}
+            onChangeText={(text) => this.handleTextFieldInput(text, 'confirmedPassword')}
           />
         </View>
 
