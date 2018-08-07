@@ -23,7 +23,7 @@ const client = new ApolloClient({
   request: async (operation) => {
     // If there are currently no authentication headers
     if (!operation.getContext().headers) {
-      // Read the headers from AsyncStorage (device cache) and set the headers
+      // Read the headers from AsyncStorage (device cache) and set the headers. When we log out a user, we need to clear out this from asyncstorage.
       const token = await AsyncStorage.getItem('token');
       if (token) {
         operation.setContext({
