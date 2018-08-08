@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, AsyncStorage } from 'react-native';
 import PropTypes from 'prop-types';
 
 /**
@@ -14,10 +14,21 @@ class AuthLoadingScreen extends Component {
   };
 
   state = {
-    isLoggedIn: true,
+    isLoggedIn: false,
+    isLoading: true,
   };
 
   componentDidMount() {
+    AsyncStorage.getItem('token').then((token) => {
+      const isLoggedIn = Boolean(token);
+      this.setState({
+        isLoading: false,
+        isLoggedIn,
+      });
+    });
+  }
+
+  componentDidUpdate() {
     if (this.state.isLoggedIn) {
       this.props.navigation.navigate('Home');
     }
@@ -27,6 +38,10 @@ class AuthLoadingScreen extends Component {
   }
 
   render() {
+    if (this.state.isLoading) {
+      return <View>Loading Screen!</View>;
+    }
+
     return <View />;
   }
 }
