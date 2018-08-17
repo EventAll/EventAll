@@ -8,7 +8,6 @@ import { CREATE_ACCOUNT } from '../../../graphql/mutations';
 const SignupScreen = ({ navigation }) => (
   <Mutation mutation={CREATE_ACCOUNT}>
     {(createAccount, { data, loading, error }) => {
-      // console.log(data, loading, error);
       if (error) {
         Alert.alert('There was an error signing up.');
       }
@@ -33,5 +32,6 @@ SignupScreen.propTypes = {
     navigate: PropTypes.func.isRequired,
   }).isRequired,
 };
+
 
 export default SignupScreen;
