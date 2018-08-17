@@ -6,7 +6,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.1.0-11",
     "@fortawesome/react-fontawesome": "^0.1.0-11",
     "@types/expo__vector-icons": "^6.2.2",
-    "apollo-boost": "^0.1.12",
+    "apollo-boost": "^0.1.13",
     "expo": "^28.0.0",
     "font-awesome": "^4.7.0",
     "graphql": "^0.13.2",
