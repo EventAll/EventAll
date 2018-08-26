@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import PropTypes from 'prop-types';
 import styles from './styles';
 
-const HomePage = ({ upcomingEventList, pastEventList, goToEvent }) => {
+const HomePage = ({ upcomingEventList, pastEventList, goToEvent, goToProfile }) => {
   function displayEvents(item) {
     return (
       <View>
@@ -27,7 +27,10 @@ const HomePage = ({ upcomingEventList, pastEventList, goToEvent }) => {
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Upcoming Events</Text>
-      <TouchableOpacity style={styles.userProfileIconBox}>
+      <TouchableOpacity
+        style={styles.userProfileIconBox}
+        onPress={() => goToProfile()}
+      >
         <Ionicons name="md-contact" size={40} style={styles.userProfileIcon} />
       </TouchableOpacity>
       <FlatList
@@ -49,6 +52,7 @@ HomePage.propTypes = {
   upcomingEventList: PropTypes.instanceOf(Array),
   pastEventList: PropTypes.instanceOf(Array),
   goToEvent: PropTypes.func.isRequired,
+  goToProfile: PropTypes.func.isRequired,
 };
 
 export default HomePage;
