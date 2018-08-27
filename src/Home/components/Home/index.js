@@ -29,7 +29,7 @@ const HomePage = ({ upcomingEventList, pastEventList, goToEvent, goToProfile }) 
       <Text style={styles.title}>Upcoming Events</Text>
       <TouchableOpacity
         style={styles.userProfileIconBox}
-        onPress={() => goToProfile()}
+        onPress={() => goToProfile}
       >
         <Ionicons name="md-contact" size={40} style={styles.userProfileIcon} />
       </TouchableOpacity>

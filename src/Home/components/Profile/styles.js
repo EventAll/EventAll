@@ -30,7 +30,6 @@ const styles = {
     paddingBottom: 0,
   },
   formText: {
-    // flexDirection: 'column',
     fontSize: 13,
     marginRight: 10,
     width: Dimensions.get('window').width * 0.2,

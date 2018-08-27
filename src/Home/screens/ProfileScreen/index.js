@@ -10,12 +10,10 @@ class ProfileScreen extends Component {
       title: 'Your Profile',
       headerLeft: (
         <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Home');
-          }}
+          onPress={() => navigation.navigate('Home')}
         >
           <Text style={{ marginLeft: 20, color: colors.EA_pink }}>Back</Text>
-        </TouchableOpacity>
+        </TouchableOpacity >
       ),
     };
   };

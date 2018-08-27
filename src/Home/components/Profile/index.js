@@ -23,18 +23,36 @@ const Profile = ({ user, handleSuccessfulUpdate }) => {
   }
 
   function handleTextFieldInput(value, field) {
-    if (field === 'name') updatedUser.name = value;
-    else if (field === 'email') updatedUser.email = value;
-    else if (field === 'password') updatedUser.password = value;
-    else if (field === 'confirmedPassword') updatedUser.confirmedPassword = value;
+    if (field === 'name') {
+      updatedUser.name = value;
+    }
+    else if (field === 'email') {
+      updatedUser.email = value;
+    }
+    else if (field === 'password') {
+      updatedUser.password = value;
+    }
+    else if (field === 'confirmedPassword') {
+      updatedUser.confirmedPassword = value;
+    }
   }
 
   function displayErrorMsg(displayErrors) {
-    if (displayErrors.name) Alert.alert('Name must not be empty.');
-    else if (displayErrors.email) Alert.alert('Email must not be empty.');
-    else if (displayErrors.noConfirmedPassword) Alert.alert('Please confirm your password.');
-    else if (displayErrors.newPasswordsDontMatch) Alert.alert('New passwords do not match.');
-    else if (displayErrors.samePassword) Alert.alert('Please enter a new password.');
+    if (displayErrors.name) {
+      Alert.alert('Name must not be empty.');
+    }
+    else if (displayErrors.email) {
+      Alert.alert('Email must not be empty.');
+    }
+    else if (displayErrors.noConfirmedPassword) {
+      Alert.alert('Please confirm your password.');
+    }
+    else if (displayErrors.newPasswordsDontMatch) {
+      Alert.alert('New passwords do not match.');
+    }
+    else if (displayErrors.samePassword) {
+      Alert.alert('Please enter a new password.');
+    }
   }
 
   function handleUpdatePressed() {
@@ -78,7 +96,9 @@ const Profile = ({ user, handleSuccessfulUpdate }) => {
 
     errors = errorsTemp;
 
-    if (!isEmpty(errors)) displayErrorMsg(errors);
+    if (!isEmpty(errors)) {
+      displayErrorMsg(errors);
+    }
     else {
       const updateUser = {
         userPhoto: updatedUser.userPhoto,
