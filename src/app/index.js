@@ -4,10 +4,10 @@ import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
 import { AsyncStorage } from 'react-native';
 
-import HomeScreen from '../Home/screens/HomeScreen';
 import EventNavigator from '../Event/navigator';
 import AuthenticationNavigator from '../Authentication/navigator';
 import AuthLoadingScreen from '../Authentication/screens/AuthLoadingScreen';
+import HomeNavigator from '../Home/navigators';
 
 const client = new ApolloClient({
   // Our GraphQL Server endpoint
@@ -45,7 +45,7 @@ const RootNavigator = createSwitchNavigator(
     AuthLoading: { screen: AuthLoadingScreen },
     Authentication: { screen: AuthenticationNavigator },
     Event: { screen: EventNavigator },
-    Home: { screen: HomeScreen },
+    Home: { screen: HomeNavigator },
   },
   {
     navigationOptions: {

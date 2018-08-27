@@ -3,15 +3,22 @@ import PropTypes from 'prop-types';
 import Home from '../../components/Home';
 
 class HomeScreen extends Component {
-  // Setting header = null removes the navigation bar from the top
   static navigationOptions = {
     header: null,
   };
+
   static propTypes = {
     navigation: PropTypes.object.isRequired,
   };
 
   state = {
+    user: {
+      userPhoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/1280px-President_Barack_Obama.jpg',
+      name: 'Barack Obama',
+      email: 'barack@whitehouse.gov',
+      password: 'bushdid911',
+    },
+
     upcomingEventList: [
       {
         key: '1',
@@ -52,12 +59,17 @@ class HomeScreen extends Component {
     this.props.navigation.navigate('Event', { event });
   };
 
+  goToProfile = () => {
+    this.props.navigation.navigate('Profile', { user: this.state.user });
+  }
+
   render() {
     return (
       <Home
         upcomingEventList={this.state.upcomingEventList}
         pastEventList={this.state.pastEventList}
         goToEvent={this.goToEvent}
+        goToProfile={this.goToProfile}
       />
     );
   }
