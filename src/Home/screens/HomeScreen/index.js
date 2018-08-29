@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
+import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
+import Swiper from 'react-native-swiper';
 import Home from '../../components/Home';
+import { withHeader } from '../../components/Header';
+import { GET_ALL_EVENTS } from '../../../graphql/queries';
 
 class HomeScreen extends Component {
   // Setting header = null removes the navigation bar from the top
@@ -52,15 +56,39 @@ class HomeScreen extends Component {
     this.props.navigation.navigate('Event', { event });
   };
 
+
   render() {
     return (
-      <Home
-        upcomingEventList={this.state.upcomingEventList}
-        pastEventList={this.state.pastEventList}
-        goToEvent={this.goToEvent}
-      />
+      <Swiper>
+        <Query query={GET_ALL_EVENTS}>
+          {({ loading, data, error }) => {
+            // console.log(loading, data, error);
+            return (
+              <Home
+                upcomingEventList={this.state.upcomingEventList}
+                pastEventList={this.state.pastEventList}
+                goToEvent={this.goToEvent}
+              />
+            );
+          }}
+        </Query>
+        <Query query={GET_ALL_EVENTS}>
+          {({ loading, data, error }) => {
+            // console.log(loading, data, error);
+            return (
+              <Home
+                upcomingEventList={this.state.upcomingEventList}
+                pastEventList={this.state.pastEventList}
+                goToEvent={this.goToEvent}
+              />
+            );
+          }}
+        </Query>
+      </Swiper>
+
+
     );
   }
 }
 
-export default HomeScreen;
+export default withHeader(HomeScreen);
