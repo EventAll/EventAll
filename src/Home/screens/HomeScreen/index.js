@@ -17,7 +17,7 @@ class HomeScreen extends Component {
           onPress={() => navigation.navigate('Home')}
         >
           <Text style={{ marginLeft: 20, color: 'red' }}>Back</Text>
-        </TouchableOpacity >
+        </TouchableOpacity>
       ),
       headerTitle: (
         <Image source={logoImg} style={{ height: 30, width: 150 }} />
