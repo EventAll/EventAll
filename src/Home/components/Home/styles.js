@@ -7,7 +7,7 @@ const styles = {
     padding: 10,
   },
   title: {
-    marginTop: 60,
+    marginTop: 10,
     marginLeft: 10,
     paddingHorizontal: 10,
     fontSize: 30,

@@ -1,14 +1,28 @@
 import React, { Component } from 'react';
+import { TouchableOpacity, Text, Image } from 'react-native';
 import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 import Swiper from 'react-native-swiper';
 import Home from '../../components/Home';
-import { withHeader } from '../../components/Header';
 import { GET_ALL_EVENTS } from '../../../graphql/queries';
 
+const logoImg = require('../../../../assets/EventAll-Text.png');
+
 class HomeScreen extends Component {
-  static navigationOptions = {
-    header: null,
+  static navigationOptions = ({ navigation }) => {
+    return {
+      title: 'Your Profile',
+      headerLeft: (
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Home')}
+        >
+          <Text style={{ marginLeft: 20, color: 'red' }}>Back</Text>
+        </TouchableOpacity >
+      ),
+      headerTitle: (
+        <Image source={logoImg} style={{ height: 30, width: 150 }} />
+      ),
+    };
   };
 
   static propTypes = {
@@ -89,4 +103,4 @@ class HomeScreen extends Component {
   }
 }
 
-export default withHeader(HomeScreen);
+export default HomeScreen;

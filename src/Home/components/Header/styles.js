@@ -2,9 +2,14 @@ import { StyleSheet } from 'react-native';
 import colors from '../../../globals/colors';
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 0.125,
+  header: {
+    flex: 0.25,
+    justifyContent: 'center',
     backgroundColor: colors.backgroundGrey,
+    paddingLeft: 15,
+    paddingRight: 15,
+    borderBottomWidth: 1,
+    borderBottomColor: colors.eventAllRed,
   },
   wrapper: {
     flex: 1,
