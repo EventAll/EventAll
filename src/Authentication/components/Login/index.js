@@ -7,7 +7,7 @@ import styles from './styles';
 
 const logoImg = require('../../../../assets/EventAllLightLong.png');
 
-class SignupScreen extends Component {
+class LoginScreen extends Component {
   static propTypes = {
     navigation: PropTypes.shape({
       navigate: PropTypes.func.isRequired,
@@ -19,7 +19,6 @@ class SignupScreen extends Component {
   state = {
     email: '',
     password: '',
-    confirmedPassword: '',
     errors: {},
   };
 
@@ -30,10 +29,9 @@ class SignupScreen extends Component {
     return StyleSheet.flatten([styles.formField, styles.errorMsg]);
   }
 
-  handleSignUpPressed = () => {
-    const errors = this.verifySignup();
+  handleLoginPressed = () => {
+    const errors = this.verifyLogin();
     if (!isEmpty(errors)) {
-      // Find some better way to display errors
       Alert.alert(JSON.stringify(errors));
       return;
     }
@@ -51,7 +49,7 @@ class SignupScreen extends Component {
     this.setState({ [field]: value, errors });
   }
 
-  verifySignup = () => {
+  verifyLogin = () => {
     const errors = {};
     if (this.state.email === '') {
       errors.email = true;
@@ -59,14 +57,6 @@ class SignupScreen extends Component {
 
     if (this.state.password === '') {
       errors.password = true;
-    }
-
-    if (this.state.confirmedPassword === '') {
-      errors.confirmedPassword = true;
-    }
-
-    if (this.state.password !== this.state.confirmedPassword && !errors.email && !errors.password && !errors.confirmedPassword) {
-      errors.passwordsMatch = false;
     }
     this.setState({ errors });
     return errors;
@@ -85,7 +75,7 @@ class SignupScreen extends Component {
         <TouchableOpacity
           style={styles.FBLoginButton}
           activeOpacity={0.7}
-          onPress={this.verifyFBSignup}
+          onPress={this.verifyFBLogin}
         >
           <Text style={styles.buttonText}>Log In With Facebook</Text>
         </TouchableOpacity>
@@ -96,8 +86,9 @@ class SignupScreen extends Component {
           <View style={styles.line} />
         </View>
 
-        <Text style={styles.regularText}>Sign up as a new user</Text>
+        <Text style={styles.regularText}>Log in to your account</Text>
         <ActivityIndicator animating={this.props.loading} />
+
         <View style={styles.formContainer}>
           <TextInput
             placeholder="Email"
@@ -108,48 +99,36 @@ class SignupScreen extends Component {
             blurOnSubmit={false}
             onChangeText={(text) => this.handleTextFieldInput(text, 'email')}
           />
+
           <TextInput
             secureTextEntry
             placeholder="Password"
             style={this.getTextFieldStyles(errors.password)}
             underlineColorAndroid="transparent"
-            blurOnSubmit={false}
             ref={(input) => {
               this.passwordInput = input;
             }}
-            onSubmitEditing={() => this.confirmPasswordInput.focus()}
             onChangeText={(text) => this.handleTextFieldInput(text, 'password')}
-          />
-          <TextInput
-            secureTextEntry
-            placeholder="Confirm Password"
-            style={this.getTextFieldStyles(errors.confirmedPassword)}
-            underlineColorAndroid="transparent"
-            ref={(input) => {
-              this.confirmPasswordInput = input;
-            }}
-            onSubmitEditing={this.handleSignUpPressed}
-            onChangeText={(text) => this.handleTextFieldInput(text, 'confirmedPassword')}
           />
         </View>
 
         <TouchableOpacity
-          style={styles.signUpButton}
+          style={styles.loginButton}
           activeOpacity={0.7}
-          onPress={this.handleSignUpPressed}
+          onPress={this.handleLoginPressed}
         >
-          <Text style={styles.buttonText}>Sign up</Text>
+          <Text style={styles.buttonText}>Log In</Text>
         </TouchableOpacity>
 
         <Text
-          style={styles.loginText}
-          onPress={() => this.props.navigation.navigate('Login')}
+          style={styles.signUpText}
+          onPress={() => this.props.navigation.navigate('Signup')}
         >
-          Already registered? Log in
+          Don&apos;t have an account? Sign up
         </Text>
       </View>
     );
   }
 }
 
-export default SignupScreen;
+export default LoginScreen;

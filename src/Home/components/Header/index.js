@@ -9,10 +9,10 @@ const Header = () => {
 };
 
 export const withHeader = (ChildComponent) => {
-  return () => (
+  return (props) => (
     <View style={styles.wrapper}>
       <Header />
-      <ChildComponent />
+      <ChildComponent {...props} />
     </View>
   );
 };
