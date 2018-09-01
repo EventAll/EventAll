@@ -59,6 +59,11 @@ const styles = {
     padding: 2,
     color: 'darkgrey',
   },
+  activityIndicatorContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
 };
 
 export default styles;

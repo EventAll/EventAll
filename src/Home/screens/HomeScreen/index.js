@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text, Image } from 'react-native';
+import { TouchableOpacity, Alert, Image } from 'react-native';
 import { Query } from 'react-apollo';
 import PropTypes from 'prop-types';
 import Swiper from 'react-native-swiper';
@@ -86,10 +86,14 @@ class HomeScreen extends Component {
     this.props.navigation.navigate('Event', { event });
   };
 
-  handleSearch = (searchString) => {
-    this.setState({ searchString });
-  };
+  /**
+   * Sets the search from the header
+   */
+  handleSearch = (searchString) => this.setState({ searchString });
 
+  /**
+   * Takes the data from the server and maps them to the format which the child component expects
+   */
   mapEvents = (events = []) => {
     const upcomingEventList = [];
     const pastEventList = [];
@@ -125,17 +129,20 @@ class HomeScreen extends Component {
   };
 
   render() {
-    // console.log(this.props);
     const { searchString } = this.state;
     return (
       <Swiper>
         <Query query={GET_EVENTS} variables={{ searchString }}>
           {({ loading, data, error }) => {
+            if (error) {
+              Alert.alert('Error fetching data from the server');
+            }
             const { upcomingEventList, pastEventList } = this.mapEvents(
               data.events
             );
             return (
               <Home
+                loading={loading}
                 upcomingEventList={upcomingEventList}
                 pastEventList={pastEventList}
                 goToEvent={this.goToEvent}
