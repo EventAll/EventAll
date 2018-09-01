@@ -4,9 +4,7 @@ import PropTypes from 'prop-types';
 import styles from './styles';
 
 const EventPage = ({ event }) => {
-  // console.log(event);
   return (
-
     <View style={styles.page}>
       <Text style={styles.title}>{event.title}</Text>
       <FlatList
