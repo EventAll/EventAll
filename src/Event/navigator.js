@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';
@@ -40,6 +41,16 @@ const EventNavigator = createBottomTabNavigator(
       // This code below is necessary for rendering the icons at the bottom of the tab
       return {
         tabBarIcon,
+        headerLeft: (
+          <TouchableOpacity>
+            <Text>BACK</Text>
+          </TouchableOpacity>
+        ),
+        headerRight: (
+          <TouchableOpacity>
+            <Text>BACK</Text>
+          </TouchableOpacity>
+        ),
       };
     },
   }

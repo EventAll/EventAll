@@ -10,17 +10,32 @@ const logoImg = require('../../../../assets/EventAll-Text.png');
 
 class HomeScreen extends Component {
   static navigationOptions = ({ navigation }) => {
+    const user = {
+      userPhoto:
+        'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/1280px-President_Barack_Obama.jpg',
+      name: 'Barack Obama',
+      email: 'barack@whitehouse.gov',
+      password: 'bushdid911',
+    };
+
     return {
       title: 'Your Profile',
-      headerLeft: (
-        <TouchableOpacity
-          onPress={() => navigation.navigate('Home')}
-        >
-          <Text style={{ marginLeft: 20, color: 'red' }}>Back</Text>
-        </TouchableOpacity>
-      ),
+      headerLeft: null,
       headerTitle: (
         <Image source={logoImg} style={{ height: 30, width: 150 }} />
+      ),
+      headerRight: (
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Profile', { user })}
+        >
+          <Image
+            style={{ height: 30, width: 30, margin: 10, borderRadius: 15 }}
+            source={{
+              uri:
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/1280px-President_Barack_Obama.jpg',
+            }}
+          />
+        </TouchableOpacity>
       ),
     };
   };
@@ -30,13 +45,6 @@ class HomeScreen extends Component {
   };
 
   state = {
-    user: {
-      userPhoto: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/President_Barack_Obama.jpg/1280px-President_Barack_Obama.jpg',
-      name: 'Barack Obama',
-      email: 'barack@whitehouse.gov',
-      password: 'bushdid911',
-    },
-
     upcomingEventList: [
       {
         key: '1',
@@ -77,9 +85,9 @@ class HomeScreen extends Component {
     this.props.navigation.navigate('Event', { event });
   };
 
-  goToProfile = () => {
-    this.props.navigation.navigate('Profile', { user: this.state.user });
-  }
+  handleSearch = (text) => {
+    console.log(`${text} searched`);
+  };
 
   render() {
     // console.log(this.props);
@@ -93,7 +101,7 @@ class HomeScreen extends Component {
                 upcomingEventList={this.state.upcomingEventList}
                 pastEventList={this.state.pastEventList}
                 goToEvent={this.goToEvent}
-                goToProfile={this.goToProfile}
+                handleSearch={this.handleSearch}
               />
             );
           }}

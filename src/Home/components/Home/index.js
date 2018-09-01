@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { BlurView } from 'expo';
 import PropTypes from 'prop-types';
 import Header from '../Header';
 import styles from './styles';
@@ -10,7 +11,7 @@ class HomePage extends Component {
     upcomingEventList: PropTypes.instanceOf(Array),
     pastEventList: PropTypes.instanceOf(Array),
     goToEvent: PropTypes.func.isRequired,
-    goToProfile: PropTypes.func.isRequired,
+    handleSearch: PropTypes.func.isRequired,
   };
 
   displayEvents = (item) => {
@@ -30,19 +31,14 @@ class HomePage extends Component {
         </TouchableOpacity>
       </View>
     );
-  }
+  };
 
   render() {
     return (
-      <View style={styles.screen} >
-        <Header />
+      <View style={styles.screen}>
+        <Header handleSearch={this.props.handleSearch} />
+
         <Text style={styles.title}>Upcoming Events</Text>
-        <TouchableOpacity
-          style={styles.userProfileIconBox}
-          onPress={() => this.props.goToProfile()}
-        >
-          <Ionicons name="md-contact" size={40} style={styles.userProfileIcon} />
-        </TouchableOpacity>
         <FlatList
           style={styles.flexboxContainer}
           data={this.props.upcomingEventList}
