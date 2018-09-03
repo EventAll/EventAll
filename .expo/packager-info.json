@@ -1,8 +1,8 @@
 {
-  "expoServerPort": 19000,
-  "packagerPort": 19001,
-  "packagerPid": 17216,
-  "expoServerNgrokUrl": "https://uz-5u4.peniqliotuv.eventall-mobile.exp.direct",
-  "packagerNgrokUrl": "https://packager.uz-5u4.peniqliotuv.eventall-mobile.exp.direct",
-  "ngrokPid": 17238
+  "expoServerPort": null,
+  "packagerPort": null,
+  "packagerPid": null,
+  "expoServerNgrokUrl": null,
+  "packagerNgrokUrl": null,
+  "ngrokPid": null
 }
