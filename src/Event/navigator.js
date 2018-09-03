@@ -1,4 +1,5 @@
 import React from 'react';
+import { TouchableOpacity, Text } from 'react-native';
 import { createBottomTabNavigator } from 'react-navigation';
 import PropTypes from 'prop-types';
 import { Ionicons } from '@expo/vector-icons';

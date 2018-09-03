@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Schedule from '../../components/Schedule';
 
-class ScheduleContainer extends React.Component {
+class ScheduleContainer extends Component {
   state = {
     exampleScheduleList: [
       {
