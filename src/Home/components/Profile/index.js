@@ -56,7 +56,6 @@ const Profile = ({ user, handleSuccessfulUpdate, handleLogOut }) => {
   }
 
   function handleLogOutPressed() {
-    console.log('i was there');
     handleLogOut();
   }
 
