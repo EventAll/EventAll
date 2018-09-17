@@ -11,7 +11,7 @@ const styles = {
   userPhoto: {
     width: Dimensions.get('window').width * 0.4,
     height: Dimensions.get('window').width * 0.4,
-    marginTop: Dimensions.get('window').width * 0.2,
+    marginTop: Dimensions.get('window').width * 0.1,
     borderRadius: 75,
   },
   updateTextContainer: {
@@ -38,9 +38,25 @@ const styles = {
     marginTop: 40,
     width: Dimensions.get('window').width * 0.65,
     borderRadius: 30,
+    borderWidth: 1,
+    borderColor: colors.EA_pink,
+    backgroundColor: 'white',
+  },
+  logoutButton: {
+    marginTop: 10,
+    width: Dimensions.get('window').width * 0.65,
+    borderRadius: 30,
     backgroundColor: colors.EA_pink,
   },
-  buttonText: {
+  updateButtonText: {
+    padding: 15,
+    textAlign: 'center',
+    color: colors.EA_pink,
+    fontSize: 13,
+    fontWeight: '500',
+    letterSpacing: 0.3,
+  },
+  logoutButtonText: {
     padding: 15,
     textAlign: 'center',
     color: 'white',

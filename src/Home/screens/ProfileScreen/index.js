@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TouchableOpacity, Text, Alert } from 'react-native';
+import { TouchableOpacity, Text, Alert, AsyncStorage } from 'react-native';
 import PropTypes from 'prop-types';
 import Profile from '../../components/Profile';
 import colors from '../../../globals/colors';
@@ -36,11 +36,17 @@ class ProfileScreen extends Component {
     });
   }
 
+  handleLogOut = () => {
+    AsyncStorage.removeItem('token');
+    this.props.navigation.navigate('Authentication');
+  }
+
   render() {
     return (
       <Profile
         user={this.state.user}
         handleSuccessfulUpdate={this.handleSuccessfulUpdate}
+        handleLogOut={this.handleLogOut}
       />
     );
   }
