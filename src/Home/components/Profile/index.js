@@ -6,7 +6,8 @@ import { ImagePicker, Permissions } from 'expo';
 
 import styles from './styles';
 
-const Profile = ({ user, handleSuccessfulUpdate }) => {
+
+const Profile = ({ user, handleSuccessfulUpdate, handleLogOut }) => {
   const updatedUser = {
     userPhoto: user.userPhoto,
     name: user.name,
@@ -14,6 +15,7 @@ const Profile = ({ user, handleSuccessfulUpdate }) => {
     password: '',
     confirmedPassword: '',
   };
+
 
   let errors = {};
 
@@ -54,6 +56,10 @@ const Profile = ({ user, handleSuccessfulUpdate }) => {
       Alert.alert('Please enter a new password.');
     }
   }
+
+  const handleLogOutPressed = () => {
+    handleLogOut();
+  };
 
   function handleUpdatePressed() {
     const errorsTemp = {};
@@ -204,8 +210,16 @@ const Profile = ({ user, handleSuccessfulUpdate }) => {
         activeOpacity={0.7}
         onPress={handleUpdatePressed}
       >
-        <Text style={styles.buttonText}>Update Profile</Text>
+        <Text style={styles.updateButtonText}>Update Profile</Text>
       </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.logoutButton}
+        activeOpacity={0.7}
+        onPress={() => handleLogOutPressed()}
+      >
+        <Text style={styles.logoutButtonText}>Log Out</Text>
+      </TouchableOpacity>
+
     </View >
   );
 };
@@ -213,6 +227,7 @@ const Profile = ({ user, handleSuccessfulUpdate }) => {
 Profile.propTypes = {
   user: PropTypes.objectOf(String),
   handleSuccessfulUpdate: PropTypes.func.isRequired,
+  handleLogOut: PropTypes.func.isRequired,
 };
 
 export default Profile;
