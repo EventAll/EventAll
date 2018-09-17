@@ -6,6 +6,7 @@ import { ImagePicker, Permissions } from 'expo';
 
 import styles from './styles';
 
+
 const Profile = ({ user, handleSuccessfulUpdate, handleLogOut }) => {
   const updatedUser = {
     userPhoto: user.userPhoto,
@@ -14,6 +15,7 @@ const Profile = ({ user, handleSuccessfulUpdate, handleLogOut }) => {
     password: '',
     confirmedPassword: '',
   };
+
 
   let errors = {};
 
@@ -55,9 +57,9 @@ const Profile = ({ user, handleSuccessfulUpdate, handleLogOut }) => {
     }
   }
 
-  function handleLogOutPressed() {
+  const handleLogOutPressed = () => {
     handleLogOut();
-  }
+  };
 
   function handleUpdatePressed() {
     const errorsTemp = {};
@@ -213,7 +215,7 @@ const Profile = ({ user, handleSuccessfulUpdate, handleLogOut }) => {
       <TouchableOpacity
         style={styles.logoutButton}
         activeOpacity={0.7}
-        onPress={handleLogOutPressed}
+        onPress={() => handleLogOutPressed()}
       >
         <Text style={styles.logoutButtonText}>Log Out</Text>
       </TouchableOpacity>
